@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Favori Fotoğraflarım</title>
+    <style>
+       img{
+    width:90%;
+    height:100%;
+    border-radius: 10px;
+    object-fit:contain;
+    padding-bottom:0px;
+}
+
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: hsla(0,100%,50%,1);
+    background-image: 
+    radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%), 
+    radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%), 
+    radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%), 
+    radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%), 
+    radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%), 
+    radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%), 
+    radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
+    height:100vh;
+    overflow-y: hidden;
+}
+
+.nav-bar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    justify-content: center;
+    backdrop-filter: saturate(100%) blur(20px);
+    top: 0px;
+    bottom: 0px;
+    padding:5px;
+    z-index:1;
+}
+
+.navbar{
+    width: 86%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 3px;
+}
+
+.text{
+    color:black;
+    text-decoration: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.prop{
+    padding:5px;
+}
+
+#work{
+    width: 22.5px;
+    height: 22.5px;
+    border: none;
+    outline: none;
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+    color: whitesmoke;
+    background-color: #000;
+    border-radius: 7px;
+}
+
+.btn{
+    text-align: end;
+    position: relative;
+    right:5px;
+    top:5px;
+}
+
+#remv{
+    width: 20px;
+    height: 20px;
+    border:none;
+    outline:none;
+    background-color:black;
+    color:whitesmoke
+}
+
+.lists{
+    margin: 10px 10px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    color:white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.lists>a {
+    text-decoration: none;
+    color: white;
+}
+
+.lists{
+    transition: 250ms linear;
+    display: flex;
+    margin: 36px 6px;
+    gap: 6px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lists:hover{
+    transition:250ms linear;
+    transform:scale(.990);
+}
+
+.nav-ul{
+    z-index: 1;
+    position: fixed;
+    height: 100vh;
+    width: 290px;
+    background-color: #000;
+    transition: all linear 500ms;
+    transform: translate(-300px);
+    top: 52.5px;
+    bottom: -42px;
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ut{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 50%;
+    justify-content: space-between;
+    width: 100%;
+    padding:0px 10px;
+}
+
+#left,#right{
+    border:none;
+    outline: none;
+    width: 40px;
+    height:40px;
+    background-color:rgba(6,255,6,.5);
+    border-radius:50%;
+    color:#f5f5f5;
+    transition:all linear 250ms;
+}
+
+.lt{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider{
+    position:absolute;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:90vh;
+    opacity:0;
+    transition:all 500ms ease-in-out;
+}
+
+.active{
+    opacity:1;
+}
+
+#left:hover,#right:hover{
+    background-color:rgba(6,255,6,.750);
+    transform: scale(1.25);
+}
+    </style>
+</head>
+<body>
+    <header class="nav-bar">
+        <div class="navbar">
+            <div class="text">
+                <a href="index.html" class="text">
+                    <i class="fa-solid fa-file-code fa-2x"></i>
+                    <span>serDEV40</span>
+                </a>
+            </div>
+            <!--  -->
+            <div class="prop">
+                <button id="work"type="submit">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-ul">
+        <div class="btn">
+            <button type="submit"id="remv">
+                <i class="fa-solid fa-xmark fa-2"></i>
+            </button>
+        </div>
+        <ul>
+            <li class="lists">
+                <i class="fa-solid fa-house" style="margin:0px 5px;"></i>
+                <a href="https://serdev40.github.io/">Ana Sayfa</a>
+            </li>
+            <li class="lists">
+                <i class="fa-solid fa-fax" style="margin:0px 5px;"></i>
+                <a href="https://serdev40.github.io/Contact.github.io/index.html">İletişim</a>
+            </li>
+            <li class="lists">
+                <i class="fa-solid fa-gamepad" style="margin:0px 5px;"></i>
+                <a href="games.html">Beğendiğim Oyunlar</a>
+            </li>
+            <li class="lists">
+                <i class="fa-solid fa-images" style="margin:0px 5px;"></i>
+                <a href="https://serdev40.github.io/">Beğendiğim Fotoğraflar</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="ut">
+            <button type="submit" id="left">
+                <i class="fa-solid fa-angles-left fa-2x"></i>
+            </button>
+            <!--  -->
+            <button type="submit" id="right">
+                <i class="fa-solid fa-angles-right fa-2x"></i>
+            </button>
+        </div>  
+        <div class="lt">
+            <div class="slider active">
+                <img src="https://wallpapercave.com/wp/wp1854626.jpg">
+            </div>
+            <div class="slider">
+                <img src="https://wallpapercave.com/wp/wp1854627.png">
+            </div>
+            <div class="slider">
+                <img src="https://wallpapercave.com/wp/wp4711664.jpg">
+            </div>
+            <div class="slider">
+                <img src="https://wallpapercave.com/wp/wp1854628.jpg">
+            </div>
+            <div class="slider">
+                <img src="https://wallpapercave.com/wp/wp4318427.jpg">
+            </div>
+            <div class="slider">
+                <img src="https://wallpapercave.com/wp/wp1854636.jpg">
+            </div>
+            <div class="slider">
+                <img src="https://wallpapercave.com/wp/wp6420951.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+      const backBttn = document.querySelector("#left");
+      const nextBttn = document.querySelector("#right");
+      const slider = document.querySelectorAll(".slider");
+
+      function back(){
+          const activeSld = document.querySelector(".active");
+          activeSld.classList.remove("active");
+
+          if(activeSld.nextElementSibling){
+              activeSld.nextElementSibling.classList.add("active");
+          }
+          else{
+              slider[0].classList.add("active");
+          }
+      }
+
+      backBttn.addEventListener("click",()=>{
+          back();
+      })
+
+      function next(){
+          const activeSld = document.querySelector(".active");
+          activeSld.classList.remove("active");
+
+          if(activeSld.previousElementSibling){
+              activeSld.previousElementSibling.classList.add("active");
+          }
+          else{
+              slider[slider.length-1].classList.add("active");
+          }
+      }
+
+      nextBttn.addEventListener("click",()=>{
+          next();
+      })
+
+      const backwrd = document.querySelector("#remv");
+      const forward = document.querySelector("#work");
+
+      forward.addEventListener("click",()=>{
+          document.querySelector(".nav-ul").style.transform = "translate(0px)"
+      })
+
+      backwrd.addEventListener("click",()=>{
+          document.querySelector(".nav-ul").style.transform = "translate(-300px)"
+      });
+    </script>
+</body>
+</html>
